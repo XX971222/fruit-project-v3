@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.BaseHomePageMapper">
+    <resultMap id="fruitInfo" type="com.example.entity.BaseFruitInfo">
+        <result property="id" column="id"/>
+        <result property="fruitName" column="fruit_name"/>
+        <result property="fruitNameEnglish" column="fruit_name_english"/>
+        <result property="category" column="category"/>
+        <result property="export" column="export"/>
+        <result property="city" column="city"/>
+        <result property="taste" column="taste"/>
+        <result property="describe" column="describe"/>
+        <result property="storageCondition" column="storage_condition"/>
+        <result property="createBy" column="create_by"/>
+        <result property="updateBy" column="update_by"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="remark" column="remark"/>
+        <result property="anotherName" column="another_name"/>
+        <result property="nutrition" column="nutrition"/>
+        <result property="familiesGenera" column="families_genera"/>
+    </resultMap>
+    <sql id="mainFruit">
+        select `id`,`fruit_name`,`fruit_name_english`,`category`,`export`,`city`,`taste`,`describe`,`storage_condition`,`create_by`,
+        `update_by`,`create_time`,`update_time`,`remark`,`another_name`,`nutrition`,`families_genera` from fruit_main
+    </sql>
+    <select id="selectFruit" resultMap="fruitInfo" parameterType="com.example.entity.BaseFruitInfo">
+        <include refid="mainFruit"/>
+        <where>
+            <if test="id !=null"> and id = #{id}</if>
+            <if test="fruitName !=null"> and fruit_name = #{fruitName}</if>
+            <if test="fruitNameEnglish !=null"> and fruit_name_english = #{fruitNameEnglish}</if>
+            <if test="category !=null"> and category = #{category}</if>
+            <if test="export !=null"> and export = #{export}</if>
+            <if test="city !=null"> and city = #{city}</if>
+            <if test="taste !=null"> and taste = #{taste}</if>
+            <if test="describe !=null"> and `describe` = #{describe}</if>
+            <if test="storageCondition !=null"> and storage_condition = #{storageCondition}</if>
+            <if test="createBy !=null"> and create_by = #{createBy}</if>
+            <if test="updateBy !=null"> and update_by = #{updateBy}</if>
+            <if test="createTime !=null"> and create_time = #{createTime}</if>
+            <if test="updateTime !=null"> and update_time = #{updateTime}</if>
+            <if test="remark !=null"> and remark = #{remark}</if>
+            <if test="anotherName !=null"> and another_name = #{anotherName}</if>
+            <if test="nutrition !=null"> and nutrition = #{nutrition}</if>
+            <if test="familiesGenera !=null"> and families_genera = #{familiesGenera}</if>
+        </where>
+    </select>
+
+    <insert id="insertFruit" parameterType="com.example.entity.BaseFruitInfo">
+        insert into fruit_main
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="fruitName !=null">fruit_name,</if>
+            <if test="fruitNameEnglish !=null">fruit_name_english,</if>
+            <if test="category !=null">category,</if>
+            <if test="export !=null">export,</if>
+            <if test="city !=null">city,</if>
+            <if test="taste !=null">taste,</if>
+            <if test="describe !=null">`describe`</if>
+            <if test="storageCondition !=null">storage_condition,</if>
+            <if test="createBy !=null">create_by,</if>
+            <if test="updateBy !=null">update_by,</if>
+            <if test="createTime !=null">create_time,</if>
+            <if test="updateTime !=null">update_time,</if>
+            <if test="remark !=null">remark,</if>
+            <if test="anotherName !=null">another_name,</if>
+            <if test="nutrition !=null">nutrition,</if>
+            <if test="familiesGenera !=null">families_genera,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="fruitName !=null">#{fruitName},</if>
+            <if test="fruitNameEnglish !=null">#{fruitNameEnglish},</if>
+            <if test="category !=null">#{category},</if>
+            <if test="export !=null">#{export},</if>
+            <if test="city !=null">#{city},</if>
+            <if test="taste !=null">#{taste},</if>
+            <if test="describe !=null">#{describe},</if>
+            <if test="storageCondition !=null">#{storageCondition},</if>
+            <if test="createBy !=null">#{createBy},</if>
+            <if test="updateBy !=null">#{updateBy},</if>
+            <if test="createTime !=null">#{createTime},</if>
+            <if test="updateTime !=null">#{updateTime},</if>
+            <if test="remark !=null">#{remark},</if>
+            <if test="anotherName !=null">#{anotherName},</if>
+            <if test="nutrition !=null">#{nutrition},</if>
+            <if test="familiesGenera !=null">#{familiesGenera},</if>
+        </trim>
+    </insert>
+
+    <update id="updateFruit" parameterType="com.example.entity.BaseFruitInfo">
+        update fruit_main
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="fruitName !=null">fruit_name = #{fruitName},</if>
+            <if test="fruitNameEnglish !=null">fruit_name_english = #{fruitNameEnglish},</if>
+            <if test="category !=null">category = #{category},</if>
+            <if test="export !=null">export = #{export},</if>
+            <if test="city !=null">city = #{city},</if>
+            <if test="taste !=null">taste = #{taste},</if>
+            <if test="describe !=null">`describe` = #{describe},</if>
+            <if test="storageCondition !=null">storage_condition = #{storageCondition},</if>
+            <if test="createBy !=null">create_by = #{createBy},</if>
+            <if test="updateBy !=null">update_by = #{updateBy},</if>
+            <if test="createTime !=null">create_time = #{createTime},</if>
+            <if test="updateTime !=null">update_time = #{updateTime},</if>
+            <if test="remark !=null">remark = #{remark},</if>
+            <if test="anotherName !=null">another_name = #{anotherName},</if>
+            <if test="nutrition !=null">nutrition = #{nutrition},</if>
+            <if test="familiesGenera !=null">families_genera = #{familiesGenera},</if>
+        </trim>
+        where id = #{id}
+    </update>
+</mapper>

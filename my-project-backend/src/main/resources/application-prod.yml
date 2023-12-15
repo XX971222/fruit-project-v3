@@ -10,17 +10,17 @@ mybatis-plus:
 spring:
   mail:
     host: smtp.163.com
-    username: javastudy111@163.com
-    password: VKQFYZMUSUZGSGEG
+    username: fruit_station@163.com
+    password: SWHSDQVKETUSCNMA
   rabbitmq:
     addresses: localhost
     username: admin
     password: admin
     virtual-host: /
   datasource:
-    url: jdbc:mysql://localhost:3306/test
+    url: jdbc:mysql://127.0.0.1:3306/fruit?useUnicode=true&characterEncoding=utf-8
     username: root
-    password: 123456
+    password: xuxin
     driver-class-name: com.mysql.cj.jdbc.Driver
   security:
     jwt:
